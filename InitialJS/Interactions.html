@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Interactions</title>
+</head>
+<body>
+
+<script>
+    "use strict";
+    alert("this is JS alert interaction");
+    let result = prompt("Enter age:", 100);//prompt user for input, default values is 100
+    let isCorrect = confirm(`You entered ${result}. Is this correct?`);//prompt user for OK or cancel.
+
+
+    //alert(isCorrect);
+    if(isCorrect)
+    {
+        alert(`The age ${result} is correct`);
+    }
+    else
+    {
+        alert(`The age ${result} is incorrect`);
+    }
+
+</script>
+
+</body>
+</html>

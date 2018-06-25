@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My First JS</title>
+</head>
+<body>
+    <p>Before the script...</p>
+
+    <script>
+        "use strict";//enable modern JS
+        /**
+         * In older mode, a variable can be used without declaring.
+         * this will not work if we are in strict mode.
+         * @type {string}
+         */
+        let message = 'Hello, world';//variable assignment
+        //constant declaration and assignment
+        const CONST_MESSAGE = 'This message will not change.';
+        alert(message);//alert the message
+        alert(CONST_MESSAGE);
+    </script>
+
+    <p>...After the script.</p>
+</body>
+</html>

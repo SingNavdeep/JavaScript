@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Functions</title>
+</head>
+<body>
+
+<script>
+    "use strict";
+
+    //global vars
+    let result, correct, inCorrect;
+
+    /**
+     * a function that alerts for correct age.
+     */
+    correct = function(){
+        alert(`The age ${result} is correct`);
+    };
+
+    /**
+     * a function that alerts for incorrect age
+     */
+    inCorrect = () => {
+        alert(`The age ${result} is incorrect`);
+    };
+
+    /**
+     * a function confirms user age and alerts about correct or incorrect age.
+     * @param age, the age input by user
+     * @param alertCorrect, callback to alert correct age message
+     * @param alertInCorrect, callback to alert incorrect age message
+     */
+    function printConfirmation(age, alertCorrect, alertInCorrect)
+    {
+        if(confirm(`You entered ${result}. Is this correct?`))
+        {
+            alertCorrect();
+        }
+        else
+        {
+            alertInCorrect();
+        }
+    }
+
+    //prompt user for input, default value// is 100
+    result = prompt("Enter age:", '100');
+
+    //result is null if cancel pressed on prompt
+    if(result != null)
+    {
+        printConfirmation(result, correct, inCorrect);
+    }
+
+</script>
+
+</body>
+</html>
