@@ -27,7 +27,10 @@ let testNegative = () =>{
 /**
  * describe callback
  */
-describe("power", function(){
+describe("test power implementation", function(){
+    /**
+     * a nested describe is used to group similar tests together
+     */
     describe("test x to power n positive", testPositive);
     describe("test x to power n negative", testNegative);
 });
