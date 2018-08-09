@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Advanced Events</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/**
+		 event handler on a document
+		 after doc has been loaded by the client, add an event listener that assigns 
+		 a event handler to all buttons in the document.
+		*/
+		document.addEventListener("DOMContentLoaded", () => {
+			//gets all input types
+			//var buttons = document.getElementsByTagName("input");
+			
+			//query selector used to select only button input types.
+			var buttons = document.querySelectorAll('input[type$="button"]');
+			
+			for(let button of buttons)
+			{
+				button.addEventListener("click", alertOnClick);
+			}
+		});
+		
+		/**
+			event object is passed to event handler when an event triggers.
+	 	 	this object can be used to find more about the event environment.
+		 	we use this object to add a common event handler for all button clicks
+		*/
+		let alertOnClick = function(event)
+		{
+			alert(`${event.currentTarget.getAttribute("value")} clicked`);
+		};
+	</script>
+	
+	<form>
+		<input id="alertButton" type="button" value="Button 1" />
+		<input id="alertButton2" type="button" value="Button 2" />
+		<input id="alertButton3" type="button" value="Button 3" />
+		<input id="text1" type="text" />
+	</form>
+</body>
+</html>

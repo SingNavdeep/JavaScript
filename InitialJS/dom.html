@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM </title>
+</head>
+<body id="test" something="SomeAttrib">
+<div id="elem">
+    <div id="elem-content">Element</div>
+</div>
+
+<div>Begin</div>
+<ul>
+    <li>Information</li>
+</ul>
+<div>End</div>
+
+<script>
+
+   /* //if id and local script var have the same name, then local script var is alerted below.
+    let elem = 2;
+    alert(elem); // DOM-element with id="elem"
+
+    //so its better to refer to DOM elements by document as below...
+    alert(document.getElementById("elem"));
+    alert(window.elem); // accessing global variable like this also works
+    alert("sibling of document node..." + document.nextSibling);
+
+    // for elem-content things are a bit more complex
+    // that has a dash inside, so it can't be a variable name
+    alert(window['elem-content']); // ...but accessible using square brackets [...]*/
+   /**
+    * three top nodes of DOM
+    */
+	alert(document);
+	alert(document instanceof Element)
+    alert(document.documentElement);
+    alert(document.body);
+    alert(document.head);
+
+   /**
+    * child nodes of head node
+    * child nodes are all child nodes including text and comments.
+    */
+   /* for(let i = 0; i < document.head.childNodes.length; i++)
+   {
+        alert(document.head.childNodes[i]);
+   } */
+
+   /**
+    * nodes of head
+    */
+   alert("First child node of " + document.head.localName.toString() + " is " + document.head.firstChild);
+   alert(`Prev sibling node of ${document.head.localName.toString()} is ${document.head.previousSibling}`);
+   alert(`Next sibling node of ${document.head.localName.toString()} is ${document.head.nextSibling}`);
+
+   /**
+    * elements of head
+    */
+   alert("First child element of " + document.head.localName.toString() + " is " + document.head.firstElementChild);
+   alert(`Prev sibling element of ${document.head.localName.toString()} is ${document.head.previousElementSibling}`);
+   alert(`Next sibling element of ${document.head.localName.toString()} is ${document.head.nextElementSibling}`);
+
+	/**
+	 * DOM is internally a JS prototype. Properties and even functions can be added  
+	 */
+	 document.body.myData={
+			name: "Ceasar",
+			title: "Imperator"
+	};
+	
+	alert(document.body.myData.name);
+
+	document.body.sayHi = function(){
+		alert(`Hello ${this.myData.name}`);
+	};
+	document.body.sayHi();
+	
+	//standard attributes can be accessed like this
+	alert(`Body id is: ${document.body.id}`);
+	
+	alert(`Body non standard attribute is: ${document.body.getAttribute('something')}`);
+	
+
+</script>
+</body>
+</html>

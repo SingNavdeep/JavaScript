@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My First JS</title>
+</head>
+<body>
+<script>
+    //student object
+    let student = {
+        name: "John",
+        age: 30,
+        isAdmin: false,
+        courses: ["html", "css", "jhs"],
+    };
+
+    //convert object to JSON string
+    let jsonStr = JSON.stringify(student);
+
+    let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}';
+
+    /**
+     * parse takes a reviver function which can be defined how to unmarshall JSON into object.
+     * @type {any}
+     */
+    let meetup = JSON.parse(str, function(key, value) {
+        if (key == 'date') return new Date(value);
+        return value;
+    });
+
+    alert( meetup.date.getDate());
+
+    alert(jsonStr);
+</script>

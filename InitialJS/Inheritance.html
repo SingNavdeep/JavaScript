@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inheritance</title>
+</head>
+<body>
+<script>
+    "use strict";
+    //animal object
+    let animal = {
+      eats: true,
+      walk()
+      {
+          alert("Animal is walking");
+      }
+    };
+
+    //rabbit extends animal
+    let rabbit = {
+        jumps: true,
+        __proto__: animal//extends animal
+    };
+
+    alert(`Rabbit eats: ${rabbit.eats}`);
+    alert(`Rabbit jumps: ${rabbit.jumps}`);
+    rabbit.walk();
+</script>
+
+</body>
+</html>
