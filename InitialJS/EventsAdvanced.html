@@ -25,6 +25,16 @@
 		});
 		
 		/**
+			Prevent right clicks. 
+			Events are poropogated, so adding this event handler on document works for all children of doc.
+		*/
+		document.oncontextmenu = function(event){
+			event.preventDefault();
+		    alert("Right click not allowed");
+		};
+		
+		
+		/**
 			event object is passed to event handler when an event triggers.
 	 	 	this object can be used to find more about the event environment.
 		 	we use this object to add a common event handler for all button clicks
