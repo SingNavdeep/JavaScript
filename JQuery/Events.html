@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>jQuery event handlers</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+	<div id="demo">Demo div</div>
+	<div id="demo1">Another div</div>
+	<div id="target"></div>
+	
+	<script type="text/javascript">
+		let prevDiv = null;
+		
+		//get div elements whose id starts with demo
+		$("div[id^='demo']").click(function()
+		{
+			if(null != prevDiv)
+			{
+				$(prevDiv).removeAttr("style");
+			}
+			//this reference is passed to every function.
+			//in this case, that refers to the element that generated this(click) event.
+			$("#target").text($(this).text() + " clicked!!");
+			$(this).attr("style", "background-color:blue");
+			
+			prevDiv = this;
+		});
+	</script>
+</body>
+</html>

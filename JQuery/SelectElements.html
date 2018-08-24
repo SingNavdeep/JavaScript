@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Select HTML elements via JQuery</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+
+	<!-- code will execute when document is ready -->
+	$(document).ready(function() {
+		//select element by unique id. Note usage of #
+		$("#mark").css("background", "red");
+	});
+	
+	<!-- another way to execute a script when doc load is complete -->
+	$(function() {
+		/**
+		select an element by type
+		*/
+		
+		//this selects element by type, ALL h1 elements are selected
+		$("h1").text("Hello H1 from Jquery");
+		
+		//this selects h1 elements having class attribute equal to demo. 
+		$("h1.demo").text("Hello Jquery");
+		
+		//selecting element attribute with equality
+		$("h1[custom='banner']").text("Hello equality selector");
+		
+		//selecting element attribute starting with "col"
+		$("h1[class^='col']").text("Hello starts with selector");
+		
+		//selecting element attribute containing "col"
+		$("h1[class*='col']").text("Hello contains selector");
+		
+		/**
+			===========================
+			POSITION SELECTORS
+			===========================
+		*/
+		//select h1 that is a child(direct descendant) of header 
+		$("header > h1").text("Parent Child");
+		
+		//all h1 that are descendants(direct or indirect) of header
+		$("header h1").text("Descendant of Header");
+		
+		let value = prompt("Enter a number between 1 and 5", 3);
+		
+		//NOTE: get method returns a normal DOM object which needs conversion to jQuery object
+		let containerDiv = $("#container").children("div").get(value - 1);
+		
+		//convert to jQuery object
+		let jQueryDiv = $(containerDiv);
+		
+		//adding attribute style to selected div element
+		jQueryDiv.attr("style", "background-color:blue");
+	});
+</script>
+</head>
+<body>
+	<h1>Hello, H1</h1>
+	<h1 class="demo">Hello, another H1</h1>
+	<h1 custom="banner">Hello World</h1>
+	<h1 class="col-md-5">Hello World</h1>
+	<h1 class="test-col-md-5">Hello World</h1>
+	
+	<header>
+		<h1>Inside Header</h1>
+		<div>
+			<h1>Descendant of header</h1>
+		</div>
+	</header>
+	<p id="mark">This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+    <p>This is one more paragraph.</p>
+    <p><strong>Note:</strong> The value of the id attribute must be unique in an HTML document.</p>
+    
+    <div id="container">
+    	<div>First</div>
+    	<div>Second</div>
+    	<div id="target">Third(Target)</div>
+    	<div>Fourth</div>
+    	<div>Fifth</div>
+    </div>
+</body>
+</html>
