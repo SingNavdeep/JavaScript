@@ -50,37 +50,70 @@
     but should be used for safety.
   */
   $(function(){
-	  let clicked = false;
-	  let index, lastGraded;
-	  let ratngCont = $('#rating-container');
+		//the div DOM element that was clicked to select a rating. 
+		//is null when page loads or if no rating selected.
+		let clickedDiv = null;
+		
+		/**
+			HOVER event
+		*/
+		$("div.rating-circle").hover(function()
+		{
+			if(null != clickedDiv)
+			{
+				removeClass(clickedDiv, "rating-chosen");
+			}
+			
+			//"this" is the DOM element that generated the hover event. 
+			addClass(this, "rating-hover");
+		});
+		
+		/**
+			MOUSEOUT event
+		*/
+		$("div.rating-circle").mouseout(function()
+		{
+			removeClass(this, "rating-hover");
+			
+			if(null != clickedDiv)
+			{
+				addClass(clickedDiv, "rating-chosen");
+			}
+		});
+		
+		/**
+			CLICK event
+		*/
+		$("div.rating-circle").click(function()
+		{
+			clickedDiv = this;
+			addClass(this, "rating-chosen");
+		});
+	});
 
-	  ratngCont.children().mouseover(function(){
-	  $(this).addClass('rating-hover');
-	  $(this).prevAll().addClass('rating-hover');
-	  $(this).nextAll().removeClass('rating-chosen');
-	  });
+/**
+	add specified class to domElement and its previous siblings 
+*/
+function addClass(domElement, className)
+{
+	  /**NOTE usage of addBack. This adds back the original selector element to the list returned by prevAll().
+		*/
+	  $(domElement).prevAll().addBack().addClass(className);
+}
 
-	  ratngCont.children().mouseout(function(){
-	  $(this).removeClass('rating-hover');
-	  $(this).prevAll().removeClass('rating-hover');
-
-	  if(clicked){
-	  lastGraded = $(ratngCont.children().get(index));
-	  lastGraded.addClass('rating-chosen');
-	  lastGraded.prevAll().addClass('rating-chosen');
-	  }
-
-	  })
-
-	  ratngCont.children().click(function(){
-	  clicked = true; 
-	  index = $(this).index()
-
-	  $(this).addClass('rating-chosen');
-	  $(this).prevAll().addClass('rating-chosen');
-	  })
-
-	  })
+/**
+	remove specified class from domElement and its previous siblings 
+*/
+function removeClass(domElement, className)
+{
+	  /**
+	  dom element. 
+	  convert to jQuery, get its prev siblings, 
+	  add the original element 
+	  and remove class from all these elements
+	  */
+	  $(domElement).prevAll().addBack().removeClass(className);
+}
  </script>
 </body>
 </html>
