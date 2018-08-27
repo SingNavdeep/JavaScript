@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Triggering Events Programatically</title>
+</head>
+<body>
+	<button type="button" class="updater">Button 1</button>
+	<button type="button" class="updater">Button 2</button>
+	<button type="button" id="target">Execute event handlers</button>
+	<div id="display"></div>
+	
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		$(function()
+		{
+			$("button.updater").click(function()
+			{
+				let existingTxt = $("#display").text();
+				let buttonTxt = $(this).text();
+				$("#display").text(existingTxt + "-" + buttonTxt);
+			});
+			
+			$("#target").click(function()
+			{
+				//executes the click event on matched selectors
+				//it is as if user clicked on corresponding buttons
+				//$("button.updater").click();
+				
+				//trigger the click event handler.
+				//a click event is ***NOT*** raised. Only corresponding code is executed
+				//$("button.updater").trigger("click");
+				
+				//trigger only on first matched element
+				$("button.updater").triggerHandler("click");
+			});
+			
+			$("#target").
+		});
+	</script>
+	
+</body>
+</html>
