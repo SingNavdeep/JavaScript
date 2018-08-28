@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DOM manipulation - jQuery</title>
+</head>
+<body>
+	<div>
+		<div id="replace" style="color:red">
+			<button type="button" id="button1">will be replaced</button>
+		</div>
+		<button type="button" id="target">Execute</button>
+	</div>
+	
+	<div class="wrap-me">Hello world(will be wrapped)</div>
+	<div class="wrap-me">Hello world(will be wrapped)</div>
+	
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		$(function()
+		{
+			$("#target").click(function()
+			{
+				/**
+					1. way to manipulate DOM using html().
+					replaces the element's html by new one.
+				*/
+				//$("#replace").html("<button type='button'>has been replaced by html</button>");
+				
+				/**
+					2. way to manipulate DOM by using text();
+					element's text replaced
+				*/
+				$("#button1").text("has been replaced by text");
+				
+				/**
+					3. way to manipulate DOM using prepend and append
+					prepend/append adds text ***INSIDE/OUTSIDE*** target element
+				*/
+				$("#replace").prepend("<div>Text prepended</div>");
+				$("#replace").append("<div>Text appended</div>");
+				
+				/**
+					4. way to manipulate DOM with before and after
+					before/after add text ***BEFORE/AFTER*** target element
+				*/
+				$("#replace").before("<div>Text added before</div>");
+				$("#replace").after("<div>Text added after</div>");
+				
+				/**
+					5. way to manipulate DOM with wrap, wrapAll, wrapInner
+					use developer tools to see difference in resulting HTML
+				*/
+				//wrapInner takes each element and wraps the inside of target element with new HTML
+				$(".wrap-me").wrapInner("<div style='color:blue'></div>");
+				
+				//wrap takes each of the element and wraps new HTML around each target element
+				//$(".wrap-me").wrap("<div style='color:blue'></div>");
+				
+				//wrapAll warps new HTML around the complete collection returned by selector
+				//$(".wrap-me").wrapAll("<div style='color:blue'></div>");
+			});
+		});
+	</script>
+
+</body>
+</html>
